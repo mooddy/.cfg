@@ -1,0 +1,58 @@
+!!Apperances!!
+*.font: xft:Iosevka Medium Extended:size=13
+URxvt.saveLines: 10000
+URxvt.scrollBar: False
+URxvt.transparent: True
+URxvt.shading: 10
+URxvt.cursorBlink: True
+
+!!Colors!!
+! special
+*.foreground:   #7ea2b4
+*.background:   #161b1d
+*.cursorColor:  #7ea2b4
+
+! black
+*.color0:       #161b1d
+*.color8:       #5a7b8c
+
+! red
+*.color1:       #FF00A0
+*.color9:       #FF00A0
+
+! green
+*.color2:       #568c3b
+*.color10:      #568c3b
+
+! yellow
+*.color3:       #8a8a0f
+*.color11:      #8a8a0f
+
+! blue
+*.color4:       #257fad
+*.color12:      #257fad
+
+! magenta
+*.color5:       #5d5db1
+*.color13:      #5d5db1
+
+! cyan
+*.color6:       #2d8f6f
+*.color14:      #2d8f6f
+
+! white
+*.color7:       #7ea2b4
+*.color15:      #ebf8ff
+
+
+!!Extensions!!
+URxvt.perl-ext-common: font-size,tabbed
+
+!!FOnt-Size
+URxvt.keysym.C-equal: perl:font-size:increase
+URxvt.keysym.C-0x2d:  perl:font-size:decrease
+URxvt.keysym.C-0:     perl:font-size:reset
+
+
+!!Dmenu!!
+dmenu.font: Iosevka Medium Extended:size=13
