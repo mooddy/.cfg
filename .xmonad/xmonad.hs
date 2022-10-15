@@ -13,7 +13,7 @@ import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.EwmhDesktops
 
 import XMonad.Layout.Combo
-import Xmonad.Layout.Square
+import XMonad.Layout.Square
 
 main :: IO()
 main = xmonad
@@ -25,7 +25,7 @@ main = xmonad
 
 myConfig = def
     { modMask = mod4Mask
-    , layoutHook = spacingRaw True (Border 0 3 3 3) True (Border 3 3 3 3) True $ myLayout
+    , layoutHook = spacingRaw True (Border 0 3 0 0) True (Border 0 3 0 0) True $ myLayout
     , terminal = "urxvt"
     , borderWidth = 3
     , focusedBorderColor = "#004EFF" 

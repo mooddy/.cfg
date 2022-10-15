@@ -1,6 +1,1 @@
 $ ghc --make xmonad.hs -i -ilib -fforce-recomp -main-is main -v0 -outputdir /home/nemi/.xmonad/build-x86_64-linux -o /home/nemi/.xmonad/xmonad-x86_64-linux
-
-xmonad.hs:46:45: error: parse error on input ‘]’
-   |
-46 | combo (combo (mirror $ twoPane 0.03 0.85),1)] (twoPane 0.03 0.5) )
-   |                                             ^
