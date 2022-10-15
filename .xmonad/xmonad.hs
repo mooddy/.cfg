@@ -1,4 +1,6 @@
 import XMonad
+
+import XMonad.Util.Cursor
 import XMonad.Util.EZConfig
 
 import XMonad.Layout.NoBorders
@@ -9,7 +11,6 @@ import XMonad.Layout.LayoutModifier
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
-
 import XMonad.Hooks.EwmhDesktops
 
 import XMonad.Layout.Combo
@@ -29,6 +30,7 @@ myConfig = def
     , terminal = "urxvt"
     , borderWidth = 3
     , focusedBorderColor = "#004EFF" 
+    , startupHook = setDefaultCursor xC_left_ptr
     }
 
 myLayout = tiled ||| Mirror tiled ||| threeCol ||| Full ||| noBorders Full
