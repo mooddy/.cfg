@@ -56,3 +56,4 @@ URxvt.keysym.C-0:     perl:font-size:reset
 
 !!Dmenu!!
 dmenu.font: Iosevka Medium Extended:size=13
+
