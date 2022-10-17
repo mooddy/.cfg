@@ -742,7 +742,6 @@ setup(void)
 			    parentwin);
         	x = 0;
         	y = topbar ? 0 : wa.height - mh;
-                mw = wa.width;
 		mw = wa.width;
 
 	}
