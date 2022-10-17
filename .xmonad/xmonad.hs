@@ -2,6 +2,7 @@ import XMonad
 
 import XMonad.Util.Cursor
 import XMonad.Util.EZConfig
+import XMonad.Util.Ungrab
 
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ThreeColumns
@@ -32,6 +33,12 @@ myConfig = def
     , focusedBorderColor = "#004EFF" 
     , startupHook = setDefaultCursor xC_left_ptr
     }
+  `additionalKeysP`
+   [ ("M-f",        spawn "apulse firefox")
+   , ("M-s",        spawn "tabbed -c surf -e")
+   , ("M-g",        spawn "google-chrome")
+   , ("M-C-s", unGrab *> spawn "scrot -s")
+   ]    
 
 myLayout = tiled ||| Mirror tiled ||| threeCol ||| Full ||| noBorders Full
   where
