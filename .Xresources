@@ -1,5 +1,5 @@
 !!Apperances!!
-*.font: xft:Iosevka Medium Extended:size=13
+*.font: xft:Iosevka Medium Extended:size=16
 URxvt.saveLines: 10000
 URxvt.scrollBar: False
 URxvt.transparent: True
@@ -52,8 +52,4 @@ URxvt.perl-ext-common: font-size,tabbed
 URxvt.keysym.C-equal: perl:font-size:increase
 URxvt.keysym.C-0x2d:  perl:font-size:decrease
 URxvt.keysym.C-0:     perl:font-size:reset
-
-
-!!Dmenu!!
-dmenu.font: Iosevka Medium Extended:size=13
 
