@@ -132,9 +132,9 @@ ${alignr} ${upspeedgraph   wlan1 30,170 5599cc 5599cc}
 wlan1 down: $alignr ${downspeed wlan1}
 ${alignr}${downspeedgraph wlan1 30,170 5599cc 5599cc}${endif}
 ${alignr}${color8}Used / Total ${color}
-RAM:${alignr}$mem / $memmax
+RAM:${alignr}${exec free -h --si | awk 'NR==2{printf $3}'} / $memmax
 Swap:${alignr}$swap / $swapmax
-/ Disk:${alignr}${fs_used /} / ${fs_size /}
+Disk:${alignr}${fs_used /} / ${fs_size /}
 ${alignc}${execi 1000 persist-enabled}
 #Battery: ${battery_percent BAT0}% ${alignr}${color8}${battery_bar 8,70 BAT0} # You may need to change BAT0 to BAT1 or add the same line again if you have more then one battery. 
 #${execi 1000 acpi 2>/dev/null | grep -q . && echo "Battery: "}${execi 10 acpi -b 2>/dev/null | cut -d" " -f3,4 | sed 's/,$//'}
