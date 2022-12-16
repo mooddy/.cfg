@@ -132,7 +132,7 @@ ${alignr} ${upspeedgraph   wlan1 30,170 5599cc 5599cc}
 wlan1 down: $alignr ${downspeed wlan1}
 ${alignr}${downspeedgraph wlan1 30,170 5599cc 5599cc}${endif}
 ${alignr}${color8}Used / Total ${color}
-RAM:${alignr}${exec free -h --si | awk 'NR==2{printf $3}'} / $memmax
+RAM:${alignr}$mem / $memmax
 Swap:${alignr}$swap / $swapmax
 Disk:${alignr}${fs_used /} / ${fs_size /}
 ${alignc}${execi 1000 persist-enabled}
