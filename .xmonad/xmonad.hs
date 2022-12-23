@@ -36,7 +36,7 @@ myConfig = def
     }
   `additionalKeysP`
    [ ("M-f",        spawn "apulse firefox")
-   , ("M-s",        spawn "surf google.com")
+   , ("M-s",        spawn "surf https://www.duckduckgo.com")
    , ("M-g",        spawn "google-chrome")
    , ("M-r",        spawn "brave-browser --incognito")
    , ("M-C-s", unGrab *> spawn "scrot -s")
