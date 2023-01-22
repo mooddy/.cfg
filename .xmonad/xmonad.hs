@@ -41,8 +41,13 @@ myConfig = def
    , ("M-r",        spawn "brave-browser --incognito")
    , ("M-C-s", unGrab *> spawn "scrot -s")
    , ("M-t",        spawn "telegram-desktop")
-   ]    
-
+--
+--volume control --
+--
+   , ("<XF86AudioLowerVolume>",   spawn "amixer set Master 1-")
+   , ("<XF86AudioRaiseVolume>",   spawn "amixer set Master 1+") 
+   ] 
+   
 myLayout = noBorders Full ||| Full ||| Mirror tiled ||| tiled ||| threeCol
   where
     threeCol = ThreeColMid nmaster delta ratio
@@ -74,7 +79,7 @@ myXmobarPP = def
     -- | Windows should have *some* title, which should not not exceed a
     -- sane length.
     ppWindow :: String -> String
-    ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 90
+    ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 40
 
     blue, lowWhite, magenta, red, white, yellow :: String -> String
     magenta  = xmobarColor "#ff79c6" ""
@@ -83,3 +88,5 @@ myXmobarPP = def
     yellow   = xmobarColor "#f1fa8c" ""
     red      = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
+
+
