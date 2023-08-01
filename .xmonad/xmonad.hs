@@ -106,6 +106,5 @@ myStartupHook = do
 		spawn  "sleep 3 && trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand false --widthtype request --transparent true --alpha 0  --tint 0x1d1f21 --height 18 &" 
 		---VoluemIcon---
 		spawnOnce "volumeicon &"
-		---  ----
 		spawn "bash /home/nemi/trayer-padding-icon.sh"
                 spawn "killall -q conky & sleep 1 && conky &"
