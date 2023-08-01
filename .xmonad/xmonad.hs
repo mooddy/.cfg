@@ -3,6 +3,7 @@ import XMonad
 import XMonad.Util.Cursor
 import XMonad.Util.EZConfig
 import XMonad.Util.Ungrab
+import XMonad.Util.SpawnOnce
 
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ThreeColumns
@@ -13,16 +14,22 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.ManageDocks  
+import XMonad.Util.Run  
+import System.IO  
 
 import XMonad.Util.Loggers
 
-main :: IO()
+import XMonad.Util.Run
+
+main :: IO ()
 main = xmonad
      .ewmhFullscreen
      .ewmh
 --     .withEasySB (statusBarProp "polybar" (pure myPolybarPP)) defToggleStrutsKey
-     .withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey   
+     .withEasySB (statusBarProp "xmobar" ( pure myXmobarPP)) defToggleStrutsKey   
      $ myConfig
+
 
 
 myConfig = def
@@ -32,7 +39,7 @@ myConfig = def
     , terminal = "urxvt"
     , focusedBorderColor = "#FF0000" 
     , normalBorderColor = "#000000"
-    , startupHook = setDefaultCursor xC_left_ptr
+    , startupHook = myStartupHook
     }
   `additionalKeysP`
    [ ("M-f",        spawn "apulse firefox")
@@ -63,11 +70,10 @@ myLayout = noBorders Full ||| Full ||| Mirror tiled ||| tiled ||| threeCol
 
 myXmobarPP :: PP
 myXmobarPP = def
-    { ppSep             = magenta " • "
+    { ppSep             = magenta ":"  
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = wrap " " "" . xmobarBorder "Bottom" "#8be9fd" 2
-    , ppHidden          = white . wrap " " ""
-    , ppHiddenNoWindows = lowWhite . wrap " " ""
+    , ppCurrent         = xmobarColor "#7ef3e4" "" .wrap "[" "]" . xmobarBorder "Bottom" "#7ef3e4" 2 
+    , ppHidden          = white . wrap "" ""
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
     , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
     , ppExtras          = [logTitles formatFocused formatUnfocused]
@@ -90,3 +96,16 @@ myXmobarPP = def
     lowWhite = xmobarColor "#bbbbbb" ""
 
 
+
+myStartupHook :: X ()
+myStartupHook = do
+		---Trayer--
+		spawn "killall -q xmobar &"
+		spawn "sleep 1 && dbus-launch xmobar &"
+                spawn "killall -q trayeri &"
+		spawn  "sleep 3 && trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand false --widthtype request --transparent true --alpha 0  --tint 0x1d1f21 --height 18 &" 
+		---VoluemIcon---
+		spawnOnce "volumeicon &"
+		---  ----
+		spawn "bash /home/nemi/trayer-padding-icon.sh"
+                spawn "killall -q conky & sleep 1 && conky &"

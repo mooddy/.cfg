@@ -7,7 +7,7 @@ static char *styledir       = "~/.surf/styles/";
 static char *certdir        = "~/.surf/certificates/";
 static char *cachedir       = "~/.surf/cache/";
 static char *cookiefile     = "~/.surf/cookies.txt";
-static char *dldir          = "~/dl/";
+static char *dldir          = "~/Downloads/dl/";
 static char *dlstatus       = "~/.surf/dlstatus/";
 
 static SearchEngine searchengines[] = {

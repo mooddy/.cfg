@@ -7,9 +7,10 @@ feh --bg-scale --no-fehbg --randomize --recursive /home/nemi//Downloads/wallpape
 xrdb .Xresources &
 
 ### Conky ###
-conky &
+#conky &
 
-#trayer --edge top --align right --SetDockType true --SetPartialStrut true \ --expand true --width 10 --transparent true --tint 0x5f5f5f --height 18 &
+### Trayer ###
+##trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand true --width 10 --transparent true --tint 0xffffff --alpha 0 --height 17 & 
 
 ### Browser History ###
 rm -rf .surf/ .cache/ .mozilla/ .config/BraveSoftware/ &

@@ -1,10 +1,12 @@
-Config { overrideRedirect = False
-       , font     = "xft:Iosevka Medium Extended-10"
+Config { overrideRedirect = False 
+       ,font      = "xft:Iosevka Medium Extended-11"
+       , additionalFonts = [ "xft:FontAwesome:size=15"
+                           ]
        , bgColor  = "#000000"
        , fgColor  = "#f8f8f2"
-       , position = TopW L 100
+       , position = Static { xpos = 0, ypos = 0, width = 1366, height = 22 }
        , commands = [ Run Weather "VNKT"
-                        [ "--template", "<weather> <tempC>°C"
+                        [ "--template", "<tempC>°C"
                         , "-L", "0"
                         , "-H", "25"
                         , "--low"   , "lightblue"
@@ -12,7 +14,8 @@ Config { overrideRedirect = False
                         , "--high"  , "red"
                         ] 36000
                     , Run Cpu
-                        [ "-L", "3"
+                        [ 
+                          "-L", "3"
                         , "-H", "50"
                         , "--high"  , "red"
                         , "--normal", "green"
@@ -24,10 +27,12 @@ Config { overrideRedirect = False
                         , "--on", ""
                         ]
                     , Run Memory ["--template", "Mem: <usedratio>%"] 10
-                    , Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
-                    , Run XMonadLog
+                    , Run Date "<fc=#FF0303>%a</fc> %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
+                    , Run UnsafeXMonadLog
+                    , Run Com "/home/nemi/trayer-padding-icon.sh" [] "trayerpad" 20
+
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% }{ |%alsa:default:Master% |%cpu% |%memory% |%VNKT% |%date% "
+       , template = "%UnsafeXMonadLog% }{ |%cpu% |%memory% |%VNKT% |%date% |%trayerpad%"
        }

@@ -1,5 +1,5 @@
 !!Apperances!!
-URxvt.font: xft:Iosevka Medium Extended:pixelsize=18:antialias=true
+URxvt.font: xft:Iosevka Medium Extended :pixelsize=18:antialias=true
 URxvt.saveLines: 10000
 URxvt.scrollBar: False
 URxvt.transparent: True
@@ -54,4 +54,4 @@ URxvt.keysym.C-0x2d:  font-size:decrease
 URxvt.keysym.C-0:     font-size:reset
 
 !!Dmenu
-dmenu.font: xft:Iosevka Medium Extended:pixelsize=15:antialias=true 
+dmenu.font: xft:Iosevka Medium Extended:pixelsize=18:antialias=true 

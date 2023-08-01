@@ -109,9 +109,9 @@ ${alignc}${exec disp=${DISPLAY#:}; disp=${disp%.[0-9]}; cat $HOME/.desktop-sessi
 res:${alignr}${execi 60 xdpyinfo | sed -n -r "s/^\s*dimensions:.*\s([0-9]+x[0-9]+).*/\1/p"}
 dpi:${alignr}${execi 60 sed -nr "s/^\s*Xft.dpi:\s*([0-9]+(x[0-9]+)?).*/\1/p" $HOME/.Xresources | grep "[0-9]" || echo 96}
 Automount: ${alignr}${execi 60 grep -q "^automount=TRUE" $HOME/.desktop-session/automount.conf 2>/dev/null && echo "enabled" || echo "disabled"}
-CPU:${alignr}${cpu}%
 Freq:${alignr}${freq}
-${color}Init:${alignr}${color3}${execi 60 detect-init.sh}
+CPU:${alignr}${cpu}%
+#${color}Init:${alignr}${color3}${execi 60 detect-init.sh}
 ${alignr}${cpugraph cpu0 30,170 5599cc 5599cc}
 Disk:${alignr}${diskio}
 ${alignr}${diskiograph 30,170 5599cc 5599cc}${if_up eth0}
