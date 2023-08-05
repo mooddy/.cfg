@@ -1,10 +1,11 @@
 !!Apperances!!
-URxvt.font: xft:Iosevka Medium Extended :pixelsize=18:antialias=true
+URxvt*font: xft:Iosevka NF Medium:size=17,xft:Ubuntu Nerd Font:size=7
 URxvt.saveLines: 10000
 URxvt.scrollBar: False
 URxvt.transparent: True
 URxvt.shading: 10
 URxvt.cursorBlink: True
+URxvt.letterSpace: 0
 
 !!Colors!!
 ! special
@@ -53,5 +54,7 @@ URxvt.keysym.C-equal: font-size:increase
 URxvt.keysym.C-0x2d:  font-size:decrease
 URxvt.keysym.C-0:     font-size:reset
 
-!!Dmenu
-dmenu.font: xft:Iosevka Medium Extended:pixelsize=18:antialias=true 
+
+/*iDmenu*/
+dmenu.font: xft:Iosevka NF Medium:pixelsize=17:antialias=true
+
