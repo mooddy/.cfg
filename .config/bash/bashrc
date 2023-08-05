@@ -87,53 +87,14 @@ fi
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    #alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
+    alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
 fi
-
-# some more ls aliases
-alias ll='ls -lh'
-alias la='ls -A'
-alias l='ls -CF'
-
-alias sx="startx"
-alias xx="xrdb ~/.Xresources"
-alias sbrc="source ~/.bashrc"
-alias vbrc="vim ~/.bashrc"
-alias vxr="vim ~/.Xresources"
-alias ls="ls --color=auto"
-alias lh="ls -lah --color=auto"
-alias la="ls -a --color=auto"
-alias animdl="python3 ~/animdl/runner.py"
-alias vxhs="vi ~/.xmonad/xmonad.hs"
-alias vxrc="vi ~/.xinitrc"
-alias bcc="rm -rf .cache/ .config/BraveSoftware/ .mozilla/ .cache/mozilla/ ~/.surf"
-alias reboot="sudo reboot -r now"
-alias halt="sudo halt -r now"
-alias install="sudo apt install"
-alias remove="sudo apt remove"
-alias rmbh="rm -rf ~/.bash_history*"
-
-#Git Alias
-alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
-
-#Python alias##
-alias python="python3.11"
-alias python3="python3.11"
-
-
-
-
-
-
-#change_wallapper
-alias wall="feh --bg-scale --no-fehbg --randomize --recursive /home/nemi//Downloads/wallpapers "
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -157,8 +118,6 @@ fi
 # Add sbin directories to PATH.  This is useful on systems that have sudo
 echo $PATH | grep -Eq "(^|:)/sbin(:|)"     || PATH=$PATH:/sbin
 echo $PATH | grep -Eq "(^|:)/usr/sbin(:|)" || PATH=$PATH:/usr/sbin
-export PATH="$HOME/.local/bin/:$PATH"
-export PATH=$HOME:$PATH
 
 
 
