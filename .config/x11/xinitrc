@@ -1,17 +1,10 @@
 #!/bin/sh
 
-###Walpaper Setter ###
-feh --bg-scale --no-fehbg --randomize --recursive /home/nemi//Downloads/wallpapers &
-
 ##Fonts and Style ###
-xrdb ~/.config/x11/xresources &
-
-
-### Compton###
-#xcompmgr &
+xrdb /home/nemi/.config/x11/xresources &
 
 ### Browser History ###
-rm -rf .surf/ .cache/ .mozilla/ .config/BraveSoftware/ &
+rm -rf .surf/ .mozilla/ .config/BraveSoftware/ &
 
 ### Crusor icon ###
 xsetroot -cursor_name left_ptr &
