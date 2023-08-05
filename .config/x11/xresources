@@ -56,5 +56,5 @@ URxvt.keysym.C-0:     font-size:reset
 
 
 /*iDmenu*/
-dmenu.font: xft:Iosevka NF Medium:pixelsize=17:antialias=true
+!dmenu.font: xft:Iosevka NF Medium:pixelsize=17:antialias=true
 
