@@ -4,7 +4,7 @@
 feh --bg-scale --no-fehbg --randomize --recursive /home/nemi//Downloads/wallpapers &
 
 ##Fonts and Style ###
-xrdb .Xresources &
+xrdb ~/.config/x11/xresources &
 
 
 ### Compton###
