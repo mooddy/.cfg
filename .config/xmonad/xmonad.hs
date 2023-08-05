@@ -39,7 +39,7 @@ myConfig = def
     , layoutHook = myLayout
     -- , layoutHook = spacingRaw True (Border 0 3 0 0) True (Border 0 3 0 0) True $ myLayout
     , borderWidth = 4
-    , terminal = "st"
+    , terminal = "urxvt"
     , focusedBorderColor = "#FF0000" 
     , normalBorderColor = "#000000"
     , startupHook = myStartupHook
@@ -50,6 +50,7 @@ myConfig = def
    , ("M-g",        spawn "google-chrome")
    , ("M-r",        spawn "brave-browser --incognito")
    , ("M-C-s", unGrab *> spawn "scrot -s")
+   , ("M-p",            spawn "dmenu_run")
    --, ("M-t",        spawn "telegram-desktop")
 --
 --volume control --
@@ -102,12 +103,20 @@ myXmobarPP = def
 
 myStartupHook :: X ()
 myStartupHook = do
-		---Trayer--
-		--spawn "killall -q xmobar &"
+		---Xmobar kill & reopen--
                 spawn "killall -q xmobar & sleep 1 && dbus-launch xmobar &"
-                --spawn "killall -q trayer &"
+                
+                --Trayer kill & repon--
 		spawn "killall -q trayer & sleep 3 && trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand false --widthtype request --transparent flase --alpha 0  --tint 0x000000 --height 18 &" 
 		---VoluemIcon---
 		spawnOnce "volumeicon &"
+                
+		--Trayer Intregation--
 		spawn "bash /home/nemi/.config/xmobar/trayer-padding-icon.sh"
+                 
+                --Conky--
                 spawn "killall -q conky & sleep 1 && conky &"
+
+		--Wallpaper--
+		spawn "feh --bg-scale --no-fehbg --randomize --recursive /home/nemi//Downloads/wallpapers & "
+
