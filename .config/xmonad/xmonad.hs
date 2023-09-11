@@ -16,47 +16,60 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks  
+import XMonad.Hooks.ManageDocks 
+
+import XMonad.Hooks.ManageHelpers
+
 import XMonad.Util.Run  
 import System.IO  
 
 import XMonad.Util.Loggers
-
 import XMonad.Util.Run
+
+import Control.Monad (liftM2)
+import qualified XMonad.StackSet as W
+myTerminal = "urxvt"
+
 
 main :: IO ()
 main = xmonad
      .ewmhFullscreen
      .ewmh
 --     .withEasySB (statusBarProp "polybar" (pure myPolybarPP)) defToggleStrutsKey
-     .withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" ( pure myXmobarPP)) defToggleStrutsKey   
+     .withEasySB (statusBarProp "xmobar" ( pure myXmobarPP)) defToggleStrutsKey   
      $ myConfig
-
-
 
 myConfig = def
     { modMask = mod4Mask
     , layoutHook = myLayout
     -- , layoutHook = spacingRaw True (Border 0 3 0 0) True (Border 0 3 0 0) True $ myLayout
     , borderWidth = 4
-    , terminal = "urxvt"
+--    , terminal :: String
+    , terminal = myTerminal
+--    , terminalClass = "urxvt"
     , focusedBorderColor = "#FF0000" 
     , normalBorderColor = "#000000"
     , startupHook = myStartupHook
     }
+     
+    
   `additionalKeysP`
-   [ ("M-f",        spawn "apulse firefox")
+   [ ("M-f",        spawn "apulse firefox --private-window")
    , ("M-s",        spawn "surf https://www.duckduckgo.com")
    , ("M-g",        spawn "google-chrome")
    , ("M-r",        spawn "brave-browser --incognito")
    , ("M-C-s", unGrab *> spawn "scrot -s")
    , ("M-p",            spawn "dmenu_run")
    --, ("M-t",        spawn "telegram-desktop")
+   , ("M-a",        spawn $ myTerminal ++ " --title Ranger -e sudo ranger")
+   , ("M-l",        spawn $ myTerminal ++ " --title Ranger -e sudo lf")
+
 --
 --volume control --
 --
    , ("<XF86AudioLowerVolume>",   spawn "amixer set Master 1-")
-   , ("<XF86AudioRaiseVolume>",   spawn "amixer set Master 1+") 
+   , ("<XF86AudioRaiseVolume>",   spawn "amixer set Master 1+")
+   , ("<XF86AudioMute>"       ,   spawn "amixer set Master toggle")
    ] 
    
 myLayout = mouseResize $ noBorders Full ||| Full ||| Mirror tiled ||| tiled ||| threeCol
@@ -100,23 +113,30 @@ myXmobarPP = def
     lowWhite = xmobarColor "#bbbbbb" ""
 
 
+myManageHook = composeAll
+    [ className =? "Brave-browser"  --> doShiftAndGo "2"
+--    , isFullscreen --> (doF W.focusDown <+> doFullFloat)
+    --more hooks
+    ]  <+> manageHook def
+    where 
+    doShiftAndGo = doF . liftM2 (.) W.greedyView W.shift
 
 myStartupHook :: X ()
 myStartupHook = do
-		---Xmobar kill & reopen--
+                ---Xmobar kill & reopen--
                 spawn "killall -q xmobar & sleep 1 && dbus-launch xmobar &"
                 
                 --Trayer kill & repon--
-		spawn "killall -q trayer & sleep 3 && trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand false --widthtype request --transparent flase --alpha 0  --tint 0x000000 --height 18 &" 
-		---VoluemIcon---
-		spawnOnce "volumeicon &"
+                spawn "killall -q trayer & sleep 3 && trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand false --widthtype request --transparent flase --alpha 0  --tint 0x000000 --height 18 &" 
+                ---VoluemIcon---
+                spawnOnce "volumeicon &"
                 
-		--Trayer Intregation--
-		spawn "bash /home/nemi/.config/xmobar/trayer-padding-icon.sh"
+                --Trayer Intregation--
+                spawn "bash /home/nemi/.config/xmobar/trayer-padding-icon.sh"
                  
                 --Conky--
                 spawn "killall -q conky & sleep 1 && conky &"
 
-		--Wallpaper--
-		spawn "feh --bg-scale --no-fehbg --randomize --recursive /home/nemi//Downloads/wallpapers & "
+                --Wallpaper--
+                spawn "sh  /home/nemi/.config/x11/scripts/wallpaper.sh "
 

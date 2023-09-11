@@ -30,7 +30,6 @@ Config { overrideRedirect = False
                     , Run Date "<fc=#FF0303>%a</fc> %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
                     , Run UnsafeXMonadLog
                     , Run Com "/home/nemi/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 10
-
                     ]
        , sepChar  = "%"
        , alignSep = "}{"

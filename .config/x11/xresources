@@ -6,6 +6,7 @@ URxvt.transparent: True
 URxvt.shading: 10
 URxvt.cursorBlink: True
 URxvt.letterSpace: 0
+URxvt.geometry: 400x400
 
 !!Colors!!
 ! special
@@ -53,8 +54,4 @@ URxvt.perl-ext-common: font-size
 URxvt.keysym.C-equal: font-size:increase
 URxvt.keysym.C-0x2d:  font-size:decrease
 URxvt.keysym.C-0:     font-size:reset
-
-
-/*iDmenu*/
-!dmenu.font: xft:Iosevka NF Medium:pixelsize=17:antialias=true
 

@@ -1,10 +1,18 @@
 #!/bin/sh
 
+sh /home/nemi/dmenuwall.sh & 
+
 ##Fonts and Style ###
 xrdb /home/nemi/.config/x11/xresources &
 
+dbus-launch udiskie &
+
 ### Browser History ###
-rm -rf .surf/ .mozilla/ .config/BraveSoftware/ &
+bleachbit -c firefox.* &
+
+rm -rf /home/nemi/.config/BraveSoftware
+rm -rf /home/nemi/.config/google-chrome/
+
 
 ### Crusor icon ###
 xsetroot -cursor_name left_ptr &
@@ -17,6 +25,8 @@ setxkbmap us,np -option grp:ctrl_shift_toggle &
 amixer set Headphone 100% &
 ##Speaker##
 amixer set Front 100% &
+
+dbus-launch dunst &
 
 ### Launch xmonad ###
 exec dbus-launch xmonad
