@@ -1,9 +1,10 @@
 Config { overrideRedirect = False 
-       ,font      = "xft:Iosevka Medium-11"
+       ,font      = "xft:Iosevka-11"
        , additionalFonts = [ "xft:FontAwesome:size=15"
                            ]
        , bgColor  = "#000000"
        , fgColor  = "#f8f8f2"
+       , alpha    = 255
        , position = Static { xpos = 0, ypos = 0, width = 1366, height = 22 }
        , commands = [ Run Weather "VNKT"
                         [ "--template", "<tempC>°C"
