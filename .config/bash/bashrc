@@ -119,9 +119,13 @@ fi
 echo $PATH | grep -Eq "(^|:)/sbin(:|)"     || PATH=$PATH:/sbin
 echo $PATH | grep -Eq "(^|:)/usr/sbin(:|)" || PATH=$PATH:/usr/sbin
 
-XDG_CURRENT_DESKTOP=KDE
 
 
+#export LANG=en_US.utf-8
+#export LC_ALL=en_US.utf-8
+#export LANGUAGE=ne_NP.utf-8
 
 
-
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
