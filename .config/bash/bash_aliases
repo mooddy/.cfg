@@ -1,6 +1,7 @@
 #Aliases
 
 # some more ls aliases
+alias ls='exa -al --long --header --color=always --group-directories-first'
 alias ll='ls -lh'
 alias la='ls -A'
 alias l='ls -CF'
@@ -11,19 +12,25 @@ alias xx="xrdb ~/.config/x11/xresources"
 alias sbrc="source ~/.config/bash/bashrc"
 alias vbrc="vim ~/.config/bash/bashrc"
 alias vxr="vim ~/.config/x11/xresources"
-alias ls="ls --color=auto"
 alias lh="ls -lah --color=auto"
 alias la="ls -a --color=auto"
 alias animdl="python3 ~/animdl/runner.py"
 alias vxhs="vi ~/.config/xmonad/xmonad.hs"
 alias vxrc="vi ~/.config/x11/xinitrc"
 alias bcc="rm -rf .cache/ .config/BraveSoftware/ .mozilla/ .cache/mozilla/ ~/.surf"
-alias reboot="sudo reboot -r now"
-alias halt="sudo halt -r now"
+
+## System ##
+alias reboot="sudo /usr/sbin/reboot"
+alias halt="sudo /usr/sbin/halt"
+alias shutdown="sudo /usr/sbin/shutdown -h now"
+
 alias install="sudo apt install"
 alias remove="sudo apt remove"
+alias update="sudo apt update"
+alias upgrade="sudo apt upgrade"
 alias rmbh="rm -rf ~/.bash_history*"
 alias vba="vi /home/nemi/.config/bash/bash_aliases"
+
 #Git Alias
 alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
 
