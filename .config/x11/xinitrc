@@ -1,33 +1,58 @@
 #!/bin/sh
 
-sh /home/nemi/dmenuwall.sh & 
-
+### Use same file for xinit & xsession ###
 ##Fonts and Style ###
-xrdb /home/nemi/.config/x11/xresources &
-
-dbus-launch udiskie &
+xrdb-merge /home/nemi/.config/x11/xresources &
 
 ### Browser History ###
 bleachbit -c firefox.* &
 
-rm -rf /home/nemi/.config/BraveSoftware
-rm -rf /home/nemi/.config/google-chrome/
+rm -rf /home/nemi/.config/BraveSoftware &
 
+rm -rf /home/nemi/.cache &
+
+#rm -rf /home/nemi/.config/google-chrome/
 
 ### Crusor icon ###
 xsetroot -cursor_name left_ptr &
 
-### Language ###
-setxkbmap us,np -option grp:ctrl_shift_toggle &
+### IMP ###
+source ~/.bash_profile &
+
+source ~/.bashrc & 
+
+source ~/.profile &
+
+### Networks ###
+connman-gtk &
+
+### Language Selection ###
+
+### Authenticate Gparted ###
+lxpolkit &
+
+### Clipboard ###
+clipmenud &
+
+### Notification ### 
+dunst &
+
+### Screensaver ###
+xscreensaver --no-splash &
+
+### transparency ###
+picom &
+
+### Mounting ###
+udiskie -ANt &
 
 ### volume all max ###
-## Headphone ##
-amixer set Headphone 100% &
-##Speaker##
-amixer set Front 100% &
+# Headphone 
+amixer -c 0 set Headphone 100% &
 
-dbus-launch dunst &
+#Speaker
+amixer -c 0 set Front 100% &
 
 ### Launch xmonad ###
-exec dbus-launch xmonad
+/usr/bin/xmonad
 

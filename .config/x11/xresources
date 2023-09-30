@@ -1,17 +1,30 @@
 !!Apperances!!
-URxvt*font: xft:Iosevka NF Medium:size=17,xft:Ubuntu Nerd Font:size=7
-URxvt.saveLines: 10000
-URxvt.scrollBar: False
-URxvt.transparent: True
-URxvt.shading: 10
-URxvt.cursorBlink: True
-URxvt.letterSpace: 0
-URxvt.geometry: 400x400
+URxvt.font:          xft:Iosevka NF Medium:size=17,\
+                     xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true,\
+		     xft:Ubuntu Nerd Font Mono:size=7,\
+		     xft:mononoki:size=17,\
+		     xft:Noto Serif Devanagari,\
+                     xft:Noto Sans Devanagari,
+		     xft:FreeSans
+
+
+URxvt.blodFont:      xft:Iosevka NF Medium:size=17,\
+                     xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true,\
+                     xft:Ubuntu Nerd Font Mono:size=7,\
+                     xft:mononoki:size=17
+
+URxvt.saveLines:     10000
+URxvt.scrollBar:     False
+URxvt.transparent:   True
+URxvt.shading:       10
+URxvt.cursorBlink:   True
+URxvt.letterSpace:   0
+URxvt.geometry:      400x400
 
 !!Colors!!
 ! special
-*.foreground:   #c5c8c6
-*.background:   #1d1f21
+*.foreground:   #dbdedc
+*.background:   #000000
 *.cursorColor:  #c5c8c6
 
 ! black
@@ -31,8 +44,8 @@ URxvt.geometry: 400x400
 *.color11:      #f0c674
 
 ! blue
-*.color4:       #5f819d
-*.color12:      #81a2be
+*.color4:       #233b4e
+*.color12:      #5f819d
 
 ! magenta
 *.color5:       #85678f
@@ -55,3 +68,5 @@ URxvt.keysym.C-equal: font-size:increase
 URxvt.keysym.C-0x2d:  font-size:decrease
 URxvt.keysym.C-0:     font-size:reset
 
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
