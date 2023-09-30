@@ -40,16 +40,17 @@ main = xmonad
      $ myConfig
 
 myConfig = def
-    { modMask = mod4Mask
-    , layoutHook = myLayout
-    -- , layoutHook = spacingRaw True (Border 0 3 0 0) True (Border 0 3 0 0) True $ myLayout
-    , borderWidth = 4
---    , terminal :: String
-    , terminal = myTerminal
---    , terminalClass = "urxvt"
-    , focusedBorderColor = "#FF0000" 
-    , normalBorderColor = "#000000"
-    , startupHook = myStartupHook
+    { modMask                = mod4Mask
+    , layoutHook             = myLayout
+    -- , layoutHook          = spacingRaw True (Border 0 3 0 0) True (Border 0 3 0 0) True $ myLayout
+    , borderWidth            = 4
+--    , terminal             :: String
+    , terminal               = myTerminal
+--    , terminalClass        = "urxvt"
+    , focusedBorderColor     = "#FF0000" 
+    , normalBorderColor      = "#000000"
+    , startupHook            = myStartupHook
+    , workspaces             = myWorkspaces
     }
      
     
@@ -61,15 +62,20 @@ myConfig = def
    , ("M-C-s", unGrab *> spawn "scrot -s")
    , ("M-p",            spawn "dmenu_run")
    --, ("M-t",        spawn "telegram-desktop")
-   , ("M-a",        spawn $ myTerminal ++ " --title Ranger -e sudo ranger")
-   , ("M-l",        spawn $ myTerminal ++ " --title Ranger -e sudo lf")
+   , ("M-a",        spawn $ myTerminal ++ " --title Ranger -e ranger")
+   , ("M-S-a",      spawn $ myTerminal ++ " --title Hash-Ranger -e sudo ranger")
+--   , ("M-l",        spawn $ myTerminal ++ " --title Ranger -e sudo lf")
+   , ("M-d",        spawn "dolphin")
+   , ("M-c",        spawn "clipmenu")
+   , ("M-C-q",      spawn "lxsession-logout")
+   , ("M-i",         spawn $ myTerminal ++ " -e sudo ibus-daemon -dxr")
 
 --
 --volume control --
 --
-   , ("<XF86AudioLowerVolume>",   spawn "amixer set Master 1-")
-   , ("<XF86AudioRaiseVolume>",   spawn "amixer set Master 1+")
-   , ("<XF86AudioMute>"       ,   spawn "amixer set Master toggle")
+   , ("<XF86AudioLowerVolume>",   spawn "amixer -c 0 set Master 1-")
+   , ("<XF86AudioRaiseVolume>",   spawn "amixer -c 0 set Master 1+")
+   , ("<XF86AudioMute>"       ,   spawn "amixer -c 0 set Master toggle")
    ] 
    
 myLayout = mouseResize $ noBorders Full ||| Full ||| Mirror tiled ||| tiled ||| threeCol
@@ -87,10 +93,11 @@ myLayout = mouseResize $ noBorders Full ||| Full ||| Mirror tiled ||| tiled ||| 
 
 myXmobarPP :: PP
 myXmobarPP = def
-    { ppSep             = magenta ":"  
+    { ppSep             = magenta " ∙ "  
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = xmobarColor "#7ef3e4" "" .wrap "[" "]" . xmobarBorder "Bottom" "#7ef3e4" 2 
-    , ppHidden          = white . wrap "" ""
+    , ppCurrent         = xmobarColor "#7ef3e4" "" .wrap " " " " 
+    , ppHidden          = white . wrap " " " "
+    , ppHiddenNoWindows = lowWhite . wrap "" " " 
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
     , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
     , ppExtras          = [logTitles formatFocused formatUnfocused]
@@ -107,27 +114,21 @@ myXmobarPP = def
     blue, lowWhite, magenta, red, white, yellow :: String -> String
     magenta  = xmobarColor "#ff79c6" ""
     blue     = xmobarColor "#bd93f9" ""
-    white    = xmobarColor "#f8f8f2" ""
+    white    = xmobarColor "#ffffff" ""
     yellow   = xmobarColor "#f1fa8c" ""
     red      = xmobarColor "#ff5555" ""
-    lowWhite = xmobarColor "#bbbbbb" ""
+    lowWhite = xmobarColor "#b4b7b5" ""
+    
 
-
-myManageHook = composeAll
-    [ className =? "Brave-browser"  --> doShiftAndGo "2"
---    , isFullscreen --> (doF W.focusDown <+> doFullFloat)
-    --more hooks
-    ]  <+> manageHook def
-    where 
-    doShiftAndGo = doF . liftM2 (.) W.greedyView W.shift
+myWorkspaces = ["| \xf1a5 ", "| \xf127 ", "| \xf2c6 ", "| \xf113 ", "| \xf269 ", "| \xf1b2 ", "| \xf121 ", "| \xf292 ", "| \xf016c "]
 
 myStartupHook :: X ()
 myStartupHook = do
                 ---Xmobar kill & reopen--
-                spawn "killall -q xmobar & sleep 1 && dbus-launch xmobar &"
+                spawn "killall -q xmobar & sleep 4 &&  xmobar &"
                 
                 --Trayer kill & repon--
-                spawn "killall -q trayer & sleep 3 && trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand false --widthtype request --transparent flase --alpha 0  --tint 0x000000 --height 18 &" 
+                spawn "killall -q trayer & sleep 10 && trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand false --widthtype request --transparent true --alpha 0 --tint 0x000000 --height 18 &" 
                 ---VoluemIcon---
                 spawnOnce "volumeicon &"
                 
@@ -135,7 +136,7 @@ myStartupHook = do
                 spawn "bash /home/nemi/.config/xmobar/trayer-padding-icon.sh"
                  
                 --Conky--
-                spawn "killall -q conky & sleep 1 && conky &"
+                spawn "killall -q conky & sleep 1 && conky -q -c /home/nemi/.config/conky/conkyrc&"
 
                 --Wallpaper--
                 spawn "sh  /home/nemi/.config/x11/scripts/wallpaper.sh "
