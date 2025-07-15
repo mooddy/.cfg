@@ -24,7 +24,7 @@ source ~/.bashrc &
 source ~/.profile &
 
 ### Networks ###
-connman-gtk &
+nm-applet &
 
 ### Language Selection ###
 
@@ -44,7 +44,7 @@ xscreensaver --no-splash &
 picom &
 
 ### Mounting ###
-udiskie -ANt &
+udiskie -Ant &
 
 ### volume all max ###
 # Headphone 
@@ -54,5 +54,5 @@ amixer -c 0 set Headphone 100% &
 amixer -c 0 set Front 100% &
 
 ### Launch xmonad ###
-/usr/bin/xmonad
+exec xmonad
 

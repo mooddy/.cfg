@@ -2,7 +2,8 @@ import XMonad
 
 import XMonad.Util.Cursor
 import XMonad.Util.EZConfig
-import XMonad.Util.Ungrab
+--import XMonad.Util.Ungrab
+--import XMonad.Operations(unGrab)
 import XMonad.Util.SpawnOnce
 
 import XMonad.Layout.NoBorders
@@ -27,7 +28,9 @@ import XMonad.Util.Loggers
 import XMonad.Util.Run
 
 import Control.Monad (liftM2)
-import qualified XMonad.StackSet as W
+import qualified XMonad.StackSet as W 
+
+
 myTerminal = "urxvt"
 
 
@@ -59,7 +62,7 @@ myConfig = def
    , ("M-s",        spawn "surf https://www.duckduckgo.com")
    , ("M-g",        spawn "google-chrome")
    , ("M-r",        spawn "brave-browser --incognito")
-   , ("M-C-s", unGrab *> spawn "scrot -s")
+--   , ("M-C-s",      unGrab *> spawn "scrot -s")
    , ("M-p",            spawn "dmenu_run")
    --, ("M-t",        spawn "telegram-desktop")
    , ("M-a",        spawn $ myTerminal ++ " --title Ranger -e ranger")
@@ -68,7 +71,8 @@ myConfig = def
    , ("M-d",        spawn "dolphin")
    , ("M-c",        spawn "clipmenu")
    , ("M-C-q",      spawn "lxsession-logout")
-   , ("M-i",         spawn $ myTerminal ++ " -e sudo ibus-daemon -dxr")
+   , ("M-i",        spawn $ myTerminal ++ " -e sudo ibus-daemon -dxr")
+   , ("M-s",        spawn $ myTerminal ++ " -e 'flatpak run com.stremio.Stremio'")
 
 --
 --volume control --

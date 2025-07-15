@@ -119,11 +119,11 @@ CPU:${alignr}${cpu}%
 #${color}Init:${alignr}${color3}${execi 60 detect-init.sh}
 ${alignr}${cpugraph cpu0 30,170 5599cc 5599cc}
 Disk:${alignr}${diskio}
-${alignr}${diskiograph 30,170 5599cc 5599cc}${if_up eth0}
-eth0 up: $alignr ${upspeed eth0}
+${alignr}${diskiograph 30,170 5599cc 5599cc}${if_up enp2s0}
+enp2s0 up: $alignr ${upspeed enp2s0}
 ${alignr}${upspeedgraph   eth0 30,170 5599cc 5599cc}
-eth0 down: $alignr ${downspeed eth0}
-${alignr}${downspeedgraph eth0 30,170  5599cc 5599cc}${endif}${if_up enp1s0}
+enp2s0 down: $alignr ${downspeed enp2s0}
+${alignr}${downspeedgraph enp2s0 30,170  5599cc 5599cc}${endif}${if_up enp1s0}
 enp1s0 up: $alignr ${upspeed enp1s0}
 ${alignr}${upspeedgraph   enp1s0 30,170 5599cc 5599cc}
 enp1s0 down: $alignr ${downspeed enp1s0}
